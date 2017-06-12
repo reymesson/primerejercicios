@@ -40,7 +40,10 @@ app.get('/about', function(req, res){
 	});
 });
 
-var rey = {};
+var rey = {
+
+	"id": "1"
+};
 
 app.listen(8081);
 console.log('Listening from 8081...');
