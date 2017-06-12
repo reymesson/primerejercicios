@@ -40,5 +40,7 @@ app.get('/about', function(req, res){
 	});
 });
 
+var rey = {};
+
 app.listen(8081);
 console.log('Listening from 8081...');
