@@ -18,7 +18,7 @@ app.engine('html', handlebars({
 	extname: '.html'
 }));
 
-app.use(express.static(__dirname + '/public'));
+app.use('/static', express.static( __dirname + '/public'));
 
 
 app.get('/', function(req, res){
