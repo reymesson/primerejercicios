@@ -70,25 +70,38 @@ makeList(jsonObj,listEl);
 function makeList( jsonObject, listElement){
     for(var i in jsonObject){//iterate through the array or object
         //insert the next child into the list as a <li>
-        var newLI = document.createElement('li');
+        var newLI = document.createElement('li');       
 
-        /*if  (jsonObject[i] instanceof Array){
-            newLI.innerHTML=i+": ARRAY";            
+        if(jsonObject[i] instanceof Object){
+        	//newLI.innerHTML = jsonObject[i].name;
+        	if(jsonObject[i].name!=undefined){        	
+        		newLI.innerHTML = jsonObject[i].name;
+        		newLI.setAttribute('class',jsonObject[i].name);
+        	}
         }
-        else if (  jsonObject[i] instanceof Object){
-            newLI.innerHTML=i+": OBJECT";            
+
+		if(jsonObject[i].name!=undefined){        	
+        	listElement.appendChild(newLI);
         }
-        else*/
-            newLI.innerHTML=i+': '+jsonObject[i];
-        listElement.appendChild(newLI);   
-        //insert a <ul> for nested nodes 
+
         if  (jsonObject[i] instanceof Array || jsonObject[i] instanceof Object){
-            var newUL = document.createElement('ul');
-            //newUL.innerHTML=i;
-            listElement.appendChild(newUL);
-            makeList(jsonObject[i],newUL);
+
+		    	var newUL = document.createElement('ul');
+
+	        	
+	        	if(jsonObject[i].name!=undefined){        	
+	        		newUL.appendChild(newLI);
+        			console.log(jsonObject[i].name);
+        		}
+
+	            listElement.appendChild(newUL);            
+	        	makeList(jsonObject[i],newUL);
+			
         }
+
     }
+
+    
 }
 
 
