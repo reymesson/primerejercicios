@@ -31,6 +31,15 @@ app.get('/', function(req, res){
 	});
 });
 
+app.get('/tree', function(req, res){
+
+	res.render('tree', {
+
+		title: 'Der',
+		name: 'About'
+	});
+});
+
 app.get('/about', function(req, res){
 
 	res.render('about', {
